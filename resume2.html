@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Prakash - Senior Product Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Custom Properties for Easy Theming */
+        :root {
+            --primary: #5B6FED;
+            --primary-dark: #4A5ADB;
+            --accent: #00D4AA;
+            --dark: #1A1A2E;
+            --gray-dark: #444;
+            --gray-medium: #666;
+            --gray-light: #999;
+            --gray-bg: #F8F9FB;
+            --white: #FFFFFF;
+            --shadow: 0 2px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Base styles optimized for A4 */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background: #f5f5f7;
+            margin: 0;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Import Inter font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        /* A4 container with subtle shadow */
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Modern gradient header */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, #2D2D44 100%);
+            color: var(--white);
+            padding: 35px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative header element */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 40%;
+            height: 200%;
+            background: rgba(91, 111, 237, 0.1);
+            transform: rotate(35deg);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.8px;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 0.2px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            flex-wrap: wrap;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: #00FFD1;
+        }
+        
+        /* Modern icon placeholders */
+        .contact-info span::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Impact Metrics with visual enhancements */
+        .impact-section {
+            background: var(--gray-bg);
+            padding: 25px 40px;
+            position: relative;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .impact-item {
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+        
+        .impact-item::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 30px;
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .impact-item:last-child::after {
+            display: none;
+        }
+        
+        .impact-number {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .impact-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--gray-medium);
+            letter-spacing: 0.8px;
+            font-weight: 500;
+        }
+        
+        /* Main Content Layout */
+        .content {
+            display: flex;
+            background: var(--white);
+            min-height: calc(297mm - 180px);
+        }
+        
+        /* Modern Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--gray-bg);
+            padding: 35px 28px;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 32px;
+        }
+        
+        .sidebar h3 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: 1.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Section divider */
+        .sidebar h3::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--gray-medium);
+            line-height: 1.6;
+        }
+        
+        .skill-tags span {
+            background: var(--white);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .skill-tags span:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .education-item {
+            margin-bottom: 16px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .education-item strong {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 2px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .education-item span {
+            color: var(--gray-medium);
+            font-size: 11px;
+        }
+        
+        /* Main Content Area */
+        .main {
+            flex: 1;
+            padding: 35px 40px;
+        }
+        
+        .section {
+            margin-bottom: 32px;
+        }
+        
+        .section-header {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        }
+        
+        /* Professional Summary */
+        .summary {
+            font-size: 12px;
+            color: var(--gray-dark);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        /* Experience Timeline */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            position: relative;
+            page-break-inside: avoid;
+        }
+        
+        /* Timeline connector */
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(91, 111, 237, 0.2);
+        }
+        
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 3.5px;
+            top: 20px;
+            width: 1px;
+            height: calc(100% + 10px);
+            background: rgba(91, 111, 237, 0.2);
+        }
+        
+        .experience-item:last-child::after {
+            display: none;
+        }
+        
+        .experience-header {
+            margin-bottom: 12px;
+        }
+        
+        .job-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+        
+        .company-info {
+            font-size: 12px;
+            color: var(--gray-medium);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        
+        .company-name {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .job-dates {
+            font-size: 11px;
+            color: var(--gray-light);
+            font-weight: 500;
+        }
+        
+        .job-description {
+            font-size: 11px;
+            color: var(--gray-medium);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .achievements li {
+            font-size: 11px;
+            color: var(--gray-dark);
+            margin-bottom: 7px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .achievements li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .achievements strong {
+            color: var(--dark);
+            font-weight: 600;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 212, 170, 0.2) 60%);
+        }
+        
+        /* Strategic Contributions */
+        .contribution-category {
+            margin-bottom: 22px;
+            page-break-inside: avoid;
+        }
+        
+        .contribution-category h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contribution-category h4::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        /* Print Optimizations */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            
+            .container {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                page-break-after: always;
+            }
+            
+            .header {
+                background: var(--dark) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .impact-section {
+                background: var(--gray-bg) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .sidebar {
+                background: var(--gray-bg) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .impact-number,
+            .section-header,
+            .sidebar h3,
+            .company-name {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Hide decorative elements */
+            .header::before {
+                display: none;
+            }
+            
+            /* Ensure proper page breaks */
+            .experience-item,
+            .contribution-category {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 850px) {
+            body {
+                padding: 0;
+            }
+            
+            .container {
+                width: 100%;
+                min-height: auto;
+                box-shadow: none;
+            }
+            
+            .content {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                padding: 25px;
+            }
+            
+            .main {
+                padding: 25px;
+            }
+            
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .impact-item::after {
+                display: none;
+            }
+            
+            .impact-item:nth-child(2n)::after {
+                display: none;
+            }
+            
+            .header {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Modern Header with Gradient -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Sai Prakash</h1>
+                <div class="subtitle">Senior Product Designer | AI Systems & Enterprise Platforms</div>
+                <div class="contact-info">
+                    <span><a href="#">Portfolio</a></span>
+                    <span>+91-9019894344</span>
+                    <span><a href="mailto:saiprak@gmail.com">saiprak@gmail.com</a></span>
+                    <span><a href="#">LinkedIn</a></span>
+                    <span>Bangalore</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Enhanced Impact Metrics -->
+        <section class="impact-section">
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <span class="impact-number">$1.2M+</span>
+                    <span class="impact-label">Operational Savings</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">€25M+</span>
+                    <span class="impact-label">Pipeline Influenced</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">1M+</span>
+                    <span class="impact-label">Users Impacted</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">50K+</span>
+                    <span class="impact-label">Enterprise Users</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content Area -->
+        <div class="content">
+            <!-- Modern Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Expertise</h3>
+                    
+                    <div class="skill-category">
+                        <h4>Design Leadership</h4>
+                        <div class="skill-tags">
+                            <span>Systems Design</span>
+                            <span>Service Design</span>
+                            <span>AI/ML Interfaces</span>
+                            <span>Design Strategy</span>
+                            <span>Design Systems</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Technical</h4>
+                        <div class="skill-tags">
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>Design Tokens</span>
+                            <span>GraphQL</span>
+                            <span>Performance</span>
+                            <span>Accessibility</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Tools</h4>
+                        <div class="skill-tags">
+                            <span>Figma</span>
+                            <span>Framer</span>
+                            <span>Code</span>
+                            <span>Analytics</span>
+                            <span>A/B Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Domains</h4>
+                        <div class="skill-tags">
+                            <span>Financial Services</span>
+                            <span>Enterprise SaaS</span>
+                            <span>Retail</span>
+                            <span>Manufacturing</span>
+                            <span>AI/ML Products</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Education</h3>
+                    
+                    <div class="education-item">
+                        <strong>PG Certificate - AI Systems Design</strong>
+                        <span>IIIT Bangalore (Ongoing)</span>
+                    </div>
+                    
+                    <div class="education-item">
+                        <strong>HCI for AI-Systems Design</strong>
+                        <span>Cambridge University (2024)</span>
+                    </div>
+                    
+                    <div class="education-item">
+                        <strong>M.Tech Software Engineering</strong>
+                        <span>BITS Pilani (2016)</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Recognition</h3>
+                    <div class="education-item">
+                        <strong>Design Excellence Award</strong>
+                        <span>JPMorgan Chase (2024)</span>
+                    </div>
+                    <div class="education-item">
+                        <strong>Innovation Champion</strong>
+                        <span>SAP (2021)</span>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Main Content -->
+            <main class="main">
+                <!-- Professional Summary -->
+                <section class="section">
+                    <h2 class="section-header">Professional Impact</h2>
+                    <p class="summary">
+                        Senior design leader with 10+ years crafting enterprise-scale solutions. Expert in AI/ML product design, 
+                        having delivered platforms serving 50K+ users with $1.2M+ measurable impact. Seeking Staff/Principal role 
+                        to drive design strategy and innovation at scale.
+                    </p>
+                </section>
+                
+                <!-- Experience with Timeline -->
+                <section class="section">
+                    <h2 class="section-header">Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Senior Product Designer – AI Platform</h3>
+                            <div class="company-info">
+                                <span class="company-name">JPMorgan Chase</span>
+                                <span class="job-dates">Jan 2023 – Present</span>
+                            </div>
+                            <p class="job-description">Design lead for enterprise AI platform revolutionizing document processing across Commercial Banking</p>
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>Architected design system</strong> for AI/ML interfaces, establishing patterns adopted across 3 business units</li>
+                            <li><strong>Drove product strategy</strong> with VP Product and Engineering, influencing 2025 roadmap priorities</li>
+                            <li>Pioneered Human-in-the-Loop AI patterns achieving <strong>50% efficiency gain</strong> and <strong>$1.2M annual savings</strong></li>
+                            <li><strong>Technical design leadership:</strong> Partnered with ML engineers to create interpretable AI interfaces</li>
+                            <li><strong>Scaled self-service platform</strong> from 0 to 10K users in 6 months through iterative improvements</li>
+                            <li>Established design review process improving quality scores 40% across platform</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Lead Product Designer – Mobile Enterprise</h3>
+                            <div class="company-info">
+                                <span class="company-name">SAP</span>
+                                <span class="job-dates">May 2022 – Jan 2023</span>
+                            </div>
+                            <p class="job-description">Led end-to-end design for global retail execution platform</p>
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>Reduced technical debt 60%</strong> by redesigning information architecture for 5 legacy workflows</li>
+                            <li>Drove adoption across <strong>100K users in 10 countries</strong> through localization strategy</li>
+                            <li>Increased task completion 41% through research-driven design optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Senior UX Designer – Platform Innovation</h3>
+                            <div class="company-info">
+                                <span class="company-name">SAP</span>
+                                <span class="job-dates">Oct 2018 – May 2022</span>
+                            </div>
+                            <p class="job-description">Strategic design lead for Industry Cloud solutions</p>
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>Generated €25M qualified pipeline</strong> through executive demos and vision prototypes</li>
+                            <li>Designed mission-critical systems for Fortune 500 clients in Oil & Gas, Manufacturing</li>
+                            <li><strong>Led COVID-19 platform response</strong> creating compliance solution for 20 regulatory frameworks</li>
+                            <li>Mentored 20+ engineers on design thinking, elevating organization's design maturity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">UX Developer – Analytics Platform</h3>
+                            <div class="company-info">
+                                <span class="company-name">SAP</span>
+                                <span class="job-dates">Aug 2014 – May 2018</span>
+                            </div>
+                            <p class="job-description">Unique technical + design expertise driving platform transformation</p>
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>Influenced 1M+ users</strong> through Business Objects to Fiori design system migration</li>
+                            <li>Built and scaled design practice within engineering organization</li>
+                            <li>Deep technical expertise: React, design systems, accessibility, performance</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Strategic Contributions -->
+                <section class="section">
+                    <h2 class="section-header">Strategic Contributions</h2>
+                    
+                    <div class="contribution-category">
+                        <h4>Systems Thinking</h4>
+                        <ul class="achievements">
+                            <li>Created unified design language spanning AI, analytics, and workflow products</li>
+                            <li>Established accessibility standards achieving WCAG AAA compliance</li>
+                            <li>Built reusable component libraries reducing development time 40%</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contribution-category">
+                        <h4>Business Impact</h4>
+                        <ul class="achievements">
+                            <li>Translated design decisions to ROI: $1.2M savings, €25M pipeline, 50% efficiency gains</li>
+                            <li>Presented to 20+ C-suite executives, securing buy-in for design investments</li>
+                            <li>Aligned design strategy with business OKRs across multiple products</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contribution-category">
+                        <h4>Technical Innovation</h4>
+                        <ul class="achievements">
+                            <li>Patents pending: "Adaptive AI Interface for Financial Document Processing"</li>
+                            <li>Published design system adopted by 500+ developers</li>
+                            <li>Pioneered AR/VR prototypes for banking (displayed at Dubai Future Banking)</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
